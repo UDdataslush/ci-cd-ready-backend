@@ -15,9 +15,6 @@ pre_commit==4.2.0
 python-decouple==3.8
 PyYAML==6.0.2
 sqlparse==0.5.3
-typing_extensions==4.13.2
-virtualenv==20.30.0
-DEBUG==True
 SECRET_KEY=your-very-secret-django-key
 ALLOWED_HOSTS=127.0.0.1,localhost
 
