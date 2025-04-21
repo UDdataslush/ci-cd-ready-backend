@@ -52,7 +52,7 @@ jobs:
         run: |
           docker buildx build \
             --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest
-            --push .
+            --push
 
       - name: Deploy to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
