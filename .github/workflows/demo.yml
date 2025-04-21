@@ -10,6 +10,7 @@ env:
   Service Account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
   SERVICE_NAME: umang-books-api
   Artifact Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
+  PROJECT_ID: tenacious-camp-357012
 
 permissions:
   id-token: write
@@ -50,12 +51,12 @@ jobs:
       - name: Build and Push Docker image
         run: |
           docker buildx build \
-            --tag gcr.io/${{ ds-github-actions@tenacious-camp-357012 }}/umang-books-api:latest \
+            --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest \
             --push .
 
       - name: Deploy to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
         with:
-          service: ${{ umang-books-api }}
+          service: $ umang-books-api
           image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
