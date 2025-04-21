@@ -7,13 +7,13 @@ on:
     branches: [main]
 
 env:
-  PROJECT_ID: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
+  Service_Account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
   SERVICE_NAME: umang-books-api
-  REGION: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
+  Artifact_Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
 
 jobs:
   build-and-deploy:
-    runs-on:  ubuntu-22.04
+    runs-on:  ubuntu-latest
 
     steps:
       - name:  Checkout Repo
@@ -22,7 +22,7 @@ jobs:
       - name:  Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: 3.10.10
 
       - name:  Install dependencies and run tests
         run: |
