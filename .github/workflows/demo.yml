@@ -47,12 +47,11 @@ jobs:
           workload_identity_provider: "projects/${{ 660956715067 }}/locations/global/workloadIdentityPools/github-actions/providers/github"
           service_account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
 
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: gcr.io/${{ 660956715067 }}/${{ env.SERVICE_NAME }}:latest
+      - name: Build and Push Docker image
+        run: |
+          docker buildx build \
+            --tag gcr.io/${{ ds-github-actions@tenacious-camp-357012 }}/umang-books-api:latest \
+            --push .
 
       - name: Deploy to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
