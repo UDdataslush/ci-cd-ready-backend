@@ -50,8 +50,8 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker buildx build . \
-            --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest
+          docker buildx build/ \
+            --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest \
             --push
 
       - name: Deploy to Google Cloud Run
