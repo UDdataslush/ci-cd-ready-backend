@@ -58,5 +58,4 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@v1
         with:
           service: $ umang-books-api
-          image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}
-          region: ${{ asia-south1-docker }}
+          image: asia-south1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/umang-books-api:latest
