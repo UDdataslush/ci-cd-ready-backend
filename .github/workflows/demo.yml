@@ -10,7 +10,6 @@ env:
   Service Account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
   SERVICE_NAME: umang-books-api
   Artifact Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
-  # SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
 jobs:
   build-and-deploy:
@@ -41,7 +40,7 @@ jobs:
         name: "Authenticate to Google Cloud"
         uses: google-github-actions/auth@v0.4.0
         with:
-          # workload_identity_provider: "projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider"
+          workload_identity_provider: "projects/${{ 660956715067 }}/locations/global/workloadIdentityPools/github-actions/providers/github"
           service_account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
 
       - name: Build and Push Docker Image
