@@ -1,0 +1,15 @@
+# Core dependencies
+Django>=4.2,<5.0
+djangorestframework>=3.14.0
+
+# For environment variable management
+python-dotenv>=1.0.0
+
+# Production WSGI HTTP Server
+gunicorn>=21.2.0
+
+# Optional: PostgreSQL support (recommended for Docker deployments)
+psycopg2-binary>=2.9.9
+
+#python version 
+3.10.10
