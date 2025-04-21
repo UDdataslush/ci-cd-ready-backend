@@ -7,38 +7,40 @@ on:
     branches: [main]
 
 env:
-  Service_Account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
+  Service Account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
   SERVICE_NAME: umang-books-api
-  Artifact_Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
+  Artifact Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
 
 jobs:
   build-and-deploy:
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - name:  Checkout Repo
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name:  Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10.10'
+          python-version: '3.10'  # Use '3.10' not '3.10.10'
 
-      # - name:  Install dependencies and run tests
-      #   # run: |
-      #   #   # python -m pip install --upgrade pip
-      #   #   # pip install -r requirements.txt
-      #   #   # python manage.py test
+      - name: Install dependencies and run tests
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python manage.py test
 
-      - name:  Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name:  Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        
-          
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: google-github-actions/auth@v0.4.0
+        with:
+          workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+          service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
 
-      - name:  Build and Push Docker Image
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
