@@ -51,7 +51,7 @@ jobs:
       - name: Build and Push Docker image
         run: |
           docker buildx build \
-            --tag gcr.io/${{ 660956715067 }}/umang-books-api:latest \
+            --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest
             --push .
 
       - name: Deploy to Google Cloud Run
@@ -59,4 +59,4 @@ jobs:
         with:
           service: $ umang-books-api
           image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}
-          region: ${{ env.REGION }}
+          region: ${{ asia-south1-docker }}
