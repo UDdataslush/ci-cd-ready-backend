@@ -57,5 +57,5 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@v1
         with:
           service: ${{ umang-books-api }}
-          image: gcr.io/${{ 660956715067 }}/${{ umang-books-api }}
-          region: ${{ asia-south1 }}
+          image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
