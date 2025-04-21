@@ -11,6 +11,10 @@ env:
   SERVICE_NAME: umang-books-api
   Artifact Registry: http://asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
