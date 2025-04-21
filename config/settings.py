@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import environ
-import os
 from decouple import config
-SECRET_KEY = config("SECRET_KEY")
+
+
+env = environ.Env()
+environ.Env.read_env()
+
 
 # from decouple import config
 
@@ -27,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-v6uqdj63msl-i_84i)50+67c6dw(nkq&eol+s@c2_(82&bp21s"
-
 SECRET_KEY = "django-insecure-v6uqdj63msl-i_84i)50+67c6dw(nkq&eol+s@c2_(82&bp21s"
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -54,7 +57,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer",  # 👈 This enables the web UI
+        "rest_framework.renderers.BrowsableAPIRenderer",
     ]
 }
 
