@@ -50,9 +50,9 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker buildx build . \
-            --tag gcr.io/${{ env.PROJECT_ID }}/umang-books-api:latest \
-            --push
+          IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/cloud-run-source-deploy/Umang/demo-api:latest"
+          docker build -t $IMAGE .
+          docker push $IMAGE
 
       - name: Deploy to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
