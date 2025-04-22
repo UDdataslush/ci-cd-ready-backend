@@ -50,6 +50,9 @@ jobs:
           docker build -t $IMAGE .
           docker push $IMAGE
 
+      - name: Set GCP Project
+        run: gcloud config set project tenacious-camp-357012
+
       - name: Deploy to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v1
         with:
