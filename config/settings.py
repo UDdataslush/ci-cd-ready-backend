@@ -15,6 +15,7 @@ import environ
 from decouple import config
 import os
 
+
 env = environ.Env()
 environ.Env.read_env()
 
