@@ -50,9 +50,10 @@ jobs:
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker asia-south1-docker.pkg.dev
+
       - name: Build and Push Docker image
         run: |
-          IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/umang/demo-api:latest"
+          IMAGE="$asia-south1-docker.pkg.dev/$tenacious-camp-357012/cloud-run-source-deploy/umang/demo-api:latest"
           docker build -t $IMAGE .
           docker push $IMAGE
 
