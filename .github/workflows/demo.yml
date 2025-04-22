@@ -48,6 +48,8 @@ jobs:
           workload_identity_provider: "projects/${{ 660956715067 }}/asia-south1-docker/global/workloadIdentityPools/github-actions/providers/github"
           service_account: ds-github-actions@tenacious-camp-357012.iam.gserviceaccount.com
 
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker-asia-south1-docker.pkg.dev
       - name: Build and Push Docker image
         run: |
           IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/umang/demo-api:latest"
