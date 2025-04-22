@@ -53,7 +53,7 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/umang/demo-api:latest"
+          IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/umang/api-backend:latest"
           docker build -t $IMAGE .
           docker push $IMAGE
 
@@ -61,4 +61,4 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@v1
         with:
           service: $ umang-books-api
-          image: asia-south1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/umang-books-api:latest
+          image: asia-south1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/api-backend:latest
