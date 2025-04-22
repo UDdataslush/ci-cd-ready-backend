@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import environ
 from decouple import config
-
+import os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -37,7 +37,7 @@ SECRET_KEY = "django-insecure-v6uqdj63msl-i_84i)50+67c6dw(nkq&eol+s@c2_(82&bp21s
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
 
 # Application definition
