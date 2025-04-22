@@ -50,7 +50,7 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/Umang/demo-api:latest"
+          IMAGE="asia-south1-docker.pkg.dev/tenacious-camp-357012/cloud-run-source-deploy/umang/demo-api:latest"
           docker build -t $IMAGE .
           docker push $IMAGE
 
